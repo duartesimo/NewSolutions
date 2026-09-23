@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const pages = [
@@ -8,14 +9,17 @@ const pages = [
 ];
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <nav className="w-full bg-white shadow-md">
+    <nav className="w-full border-b border-slate-300 bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
         <Link to="/" className="text-xl font-bold text-slate-900">
           NewSolutions
         </Link>
 
-        <div className="flex items-center gap-8">
+        {/* Desktop navigation */}
+        <div className="hidden items-center gap-8 md:flex">
           {pages.map((page) => (
             <Link
               key={page.path}
@@ -27,13 +31,38 @@ function Navbar() {
           ))}
         </div>
 
+        {/* Desktop CTA */}
         <Link
           to="/contact"
-          className="rounded-lg bg-blue-600 px-5 py-2.5 text-white transition hover:bg-blue-700"
+          className="hidden rounded-lg bg-blue-600 px-5 py-2.5 text-white transition hover:bg-blue-700 md:block"
         >
           Get Started
         </Link>
+
+        {/* Mobile button */}
+        <button
+          className="text-2xl md:hidden"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </button>
       </div>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="flex flex-col gap-4 border-t px-6 py-5 md:hidden">
+          {pages.map((page) => (
+            <Link
+              key={page.path}
+              to={page.path}
+              onClick={() => setMenuOpen(false)}
+              className="text-slate-600"
+            >
+              {page.name}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }
