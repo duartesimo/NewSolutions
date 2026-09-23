@@ -1,7 +1,9 @@
+import Button from "../components/ui/Button"
+
 function Home() {
 	return (
-		<div>
-			Home
+		<div className="bg">
+			<div>Home</div>
 		</div>
 	)
 }
