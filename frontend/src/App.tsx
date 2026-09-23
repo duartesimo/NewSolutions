@@ -1,11 +1,41 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+import Home from "./pages/Home"
+import Services from "./pages/Services"
+import About from "./pages/About"
+import Contact from "./pages/Contact"
+
 function App() {
-  return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <h1 className="text-5xl font-bold text-blue-900">
-        NewSolutions
-      </h1>
-    </div>
-  )
+
+	return (
+		<BrowserRouter>
+
+			<Routes>
+
+				<Route
+					path="/"
+					element={<Home />}
+				/>
+
+				<Route
+					path="/services"
+					element={<Services />}
+				/>
+
+				<Route
+					path="/about"
+					element={<About />}
+				/>
+
+				<Route
+					path="/contact"
+					element={<Contact />}
+				/>
+
+			</Routes>
+
+		</BrowserRouter>
+	)
 }
 
 export default App
