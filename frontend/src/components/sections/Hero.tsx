@@ -4,7 +4,7 @@ import heroImage from "../../assets/hero-image.webp";
 function Hero() {
   return (
     <section className="bg-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:py-28">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-20 lg:grid-cols-2">
         {/* Content */}
         <div>
           <p className="mb-4 text-sm font-semibold tracking-widest text-blue-700 uppercase">

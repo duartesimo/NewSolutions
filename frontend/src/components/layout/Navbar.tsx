@@ -14,7 +14,8 @@ function Navbar() {
   return (
     <nav className="w-full border-b border-slate-300 bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <Link to="/" className="text-xl font-bold text-slate-900">
+
+        <Link to="/" className="text-2xl md:text-3xl font-bold text-slate-900">
           NewSolutions
         </Link>
 
@@ -24,7 +25,7 @@ function Navbar() {
             <Link
               key={page.path}
               to={page.path}
-              className="text-slate-600 transition hover:text-blue-600"
+              className="text-slate-600 text-lg transition hover:text-blue-600"
             >
               {page.name}
             </Link>
