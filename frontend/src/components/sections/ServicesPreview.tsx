@@ -22,23 +22,24 @@ const services = [
 ];
 
 function ServicesPreview() {
-
   return (
     <section className="bg-slate-50 py-20">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
-          <p className="text-sm font-semibold tracking-widest text-blue-700 uppercase">
+        <div>
+          <p className="text-center text-sm font-semibold tracking-widest text-blue-700 uppercase md:text-left">
             Our services
           </p>
 
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="mt-4 text-center text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl md:text-left">
             Solutions built for modern businesses
           </h2>
 
-          <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
+          <p className="mt-4 text-center text-base leading-7 text-slate-600 sm:text-lg md:text-left">
             From websites to automation, we create digital solutions that help
             companies grow.
           </p>
+        </div>
 
         {/* Cards */}
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -48,12 +49,13 @@ function ServicesPreview() {
             return (
               <div
                 key={service.title}
-                className="rounded-2xl bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                className="rounded-2xl bg-white p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg md:p-8 md:text-left"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-blue-100">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-3xl bg-blue-100 md:mx-0">
                   <Icon size={24} className="text-blue-700" />
                 </div>
-                <h3 className="mt-2 text-xl font-semibold text-slate-900">
+
+                <h3 className="mt-4 text-xl font-semibold text-slate-900">
                   {service.title}
                 </h3>
 
