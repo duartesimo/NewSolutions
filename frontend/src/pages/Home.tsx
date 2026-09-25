@@ -1,6 +1,7 @@
 import Hero from "../components/sections/Hero";
 import ServicesPreview from "../components/sections/ServicesPreview";
 import Benefits from "../components/sections/Benefits";
+import CTA from "../components/sections/CTA";
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
       <Hero />
       <ServicesPreview />
       <Benefits />
+      <CTA />
     </>
   );
 }
