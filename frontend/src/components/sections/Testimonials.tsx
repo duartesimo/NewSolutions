@@ -36,7 +36,7 @@ function Testimonials() {
           </p>
 
           <h2 className="mt-4 text-3xl leading-tight font-bold tracking-tight text-slate-950 sm:text-4xl">
-            Trusted by businesses that want to grow
+            Trusted by businesses like yours
           </h2>
         </div>
 
