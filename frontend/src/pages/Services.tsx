@@ -1,9 +1,7 @@
+import Testimonials from "../components/sections/Testimonials"
+
 function Services() {
-	return (
-		<div>
-			Services
-		</div>
-	)
+	return <Testimonials />;
 }
 
-export default Services
+export default Services;
