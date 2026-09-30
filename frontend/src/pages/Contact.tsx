@@ -1,9 +1,11 @@
+import ContactHero from "../components/sections/ContactHero";
+
 function Contact() {
 	return (
-		<div>
-			Contact
-		</div>
-	)
+    <>
+      <ContactHero />
+    </>
+  );
 }
 
 export default Contact
