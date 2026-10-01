@@ -68,6 +68,7 @@ function ContactHero() {
           })}
         </div>
       </div>
+      <ContactForm />
     </div>
   );
 }
