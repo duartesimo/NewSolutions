@@ -74,13 +74,14 @@ function ContactInfoSection() {
           <iframe
             title="Google Map"
             src="https://www.google.com/maps?q=Valencia,Spain&z=12&output=embed"
-            className="h-full w-full"
+            className="h-96 w-full lg:h-full"
             loading="lazy"
           />
 
-          <div className="absolute right-4 bottom-4 rounded-2xl bg-white p-4 shadow-lg sm:right-6 sm:bottom-6">
+          <div className="absolute right-4 bottom-4 left-4 rounded-2xl bg-white p-4 shadow-lg sm:right-6 sm:bottom-6 sm:left-auto sm:max-w-sm">
             <h3 className="font-semibold text-slate-950">Valencia, Spain</h3>
-            <p className="mt-1 max-w-xs text-sm leading-6 text-slate-600">
+
+            <p className="mt-1 text-sm leading-6 text-slate-600">
               We work with clients locally and remotely across different
               locations.
             </p>
