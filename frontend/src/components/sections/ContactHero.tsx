@@ -21,7 +21,7 @@ const benefits = [
 
 function ContactHero() {
   return (
-    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 sm:py-20 lg:grid-cols-2 lg:py-24">
+    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-12 sm:py-20 lg:grid-cols-2 lg:py-24">
       <div className="text-center lg:text-left">
         {/* Eyebrow */}
         <p className="text-sm font-semibold tracking-widest text-blue-700 uppercase">
