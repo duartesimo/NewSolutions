@@ -71,7 +71,12 @@ function ContactInfoSection() {
 
         {/* Right side */}
         <div className="relative overflow-hidden rounded-2xl">
-          
+          <iframe
+            title="Google Map"
+            src="https://www.google.com/maps?q=Valencia,Spain&z=12&output=embed"
+            className="h-full w-full"
+            loading="lazy"
+          />
 
           <div className="absolute right-4 bottom-4 rounded-2xl bg-white p-4 shadow-lg sm:right-6 sm:bottom-6">
             <h3 className="font-semibold text-slate-950">Valencia, Spain</h3>
