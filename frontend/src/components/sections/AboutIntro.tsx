@@ -34,7 +34,40 @@ function AboutIntro() {
           </div>
         </div>
 
+        {/* Our Story */}
+        <div className="mt-20 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Image */}
+          <div className="order-2 lg:order-1">
+            <img
+              src={storyImage}
+              alt="Lisbon city view"
+              className="block w-full rounded-3xl object-cover"
+            />
+          </div>
 
+          {/* Text */}
+          <div className="order-1 text-center lg:order-2 lg:text-left">
+            <p className="text-sm font-semibold tracking-widest text-blue-700 uppercase">
+              Our story
+            </p>
+
+            <h2 className="mt-4 text-3xl leading-tight font-bold tracking-tight text-slate-950 sm:text-4xl">
+              A passion for technology and real impact
+            </h2>
+
+            <p className="mt-6 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+              NewSolutions was founded with a simple goal: to help businesses
+              grow through technology. What started as a passion for building
+              things on the web has evolved into a professional digital
+              solutions company focused on creating real value for our clients.
+            </p>
+
+            <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+              We believe that great solutions come from understanding people’s
+              needs, combining the right technology and keeping things simple.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
