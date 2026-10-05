@@ -49,19 +49,23 @@ function OurValues() {
             return (
               <div
                 key={value.title}
-                className="rounded-2xl bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                className="flex gap-5 rounded-2xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
+                {/* Icon */}
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-100">
                   <Icon size={24} className="text-blue-700" />
                 </div>
 
-                <h3 className="mt-6 text-xl font-bold tracking-tight text-slate-950">
-                  {value.title}
-                </h3>
+                {/* Content */}
+                <div>
+                  <h3 className="text-lg font-bold tracking-tight text-slate-950">
+                    {value.title}
+                  </h3>
 
-                <p className="mt-3 text-base leading-7 text-slate-600">
-                  {value.description}
-                </p>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                    {value.description}
+                  </p>
+                </div>
               </div>
             );
           })}
