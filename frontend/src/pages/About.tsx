@@ -1,7 +1,9 @@
+import AboutIntro from "../components/sections/AboutIntro"
+
 function About() {
 	return (
 		<div>
-			About
+			<AboutIntro />
 		</div>
 	)
 }
