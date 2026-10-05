@@ -49,7 +49,7 @@ function OurValues() {
             return (
               <div
                 key={value.title}
-                className="flex gap-5 rounded-2xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                className="flex flex-col items-center gap-5 rounded-2xl bg-white p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg md:flex-row md:items-start md:text-left"
               >
                 {/* Icon */}
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-100">
