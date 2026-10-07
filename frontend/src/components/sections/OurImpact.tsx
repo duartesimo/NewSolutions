@@ -38,20 +38,23 @@ function OurImpact() {
         </div>
 
         {/* Stats */}
-        <div className="mt-12 rounded-3xl bg-blue-900 px-6 py-12 sm:px-10 lg:px-12">
-          <div className="grid grid-cols-2 gap-8 text-center lg:grid-cols-4">
-            {stats.map((stat) => (
-              <div key={stat.label}>
-                <p className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                  {stat.value}
-                </p>
+        <div className="grid grid-cols-2 gap-8 py-12 lg:grid-cols-4 lg:gap-0">
+          {stats.map((stat, index) => (
+            <div
+              key={stat.label}
+              className={`text-center lg:px-8 ${
+                index !== stats.length - 1
+                  ? "lg:border-r-2 lg:border-slate-200"
+                  : ""
+              }`}
+            >
+              <p className="text-5xl font-bold tracking-tight text-blue-700 sm:text-6xl">
+                {stat.value}
+              </p>
 
-                <p className="mt-2 text-sm text-blue-100 sm:text-base">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
+              <p className="mt-3 text-base text-slate-600">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
