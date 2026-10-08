@@ -29,7 +29,6 @@ function OurJourney() {
   return (
     <section className="bg-slate-50 py-20">
       <div className="mx-auto max-w-7xl px-6">
-
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold tracking-widest text-blue-700 uppercase">
@@ -45,31 +44,25 @@ function OurJourney() {
           </p>
         </div>
 
-
         {/* Timeline */}
         <div className="relative mt-16">
-
-          {/* Vertical line */}
-          <div className="absolute top-0 bottom-0 left-4 hidden w-px bg-slate-200 sm:block lg:left-1/2" />
-
+          {/* Timeline line */}
+          <div className="absolute top-0 bottom-0 left-4 w-px bg-slate-200 lg:left-1/2" />
 
           <div className="flex flex-col gap-12">
-
             {milestones.map((item, index) => (
               <div
                 key={item.year}
                 className="relative grid grid-cols-1 gap-6 sm:grid-cols-2"
               >
-
                 {/* Dot */}
-                <div className="absolute top-2 left-0 hidden h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-blue-700 ring-8 ring-slate-50 sm:flex lg:left-1/2">
+                <div className="absolute top-2 left-4 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-blue-700 ring-8 ring-slate-50 lg:left-1/2">
                   <div className="h-2 w-2 rounded-full bg-white" />
                 </div>
 
-
                 {/* Content */}
                 <div
-                  className={`pl-12 sm:pl-0 ${
+                  className={`pl-16 sm:pl-0 ${
                     index % 2 === 0
                       ? "lg:pr-16 lg:text-right"
                       : "lg:col-start-2 lg:pl-16"
@@ -87,13 +80,10 @@ function OurJourney() {
                     {item.description}
                   </p>
                 </div>
-
               </div>
             ))}
-
           </div>
         </div>
-
       </div>
     </section>
   );
