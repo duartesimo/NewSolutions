@@ -1,4 +1,5 @@
 import { Zap, Settings, Headphones } from "lucide-react";
+import SectionHeader from "../ui/SectionHeader";
 
 const benefits = [
   {
@@ -26,20 +27,12 @@ function Benefits() {
     <section className="bg-white py-20">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
-        <div>
-          <p className="text-center text-sm font-semibold tracking-widest text-blue-700 uppercase md:text-left">
-            Why choose us
-          </p>
-
-          <h2 className="mt-4 text-center text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl md:text-left">
-            Solutions designed around your business
-          </h2>
-
-          <p className="mt-4 max-w-2xl text-center text-base leading-7 text-slate-600 sm:text-lg md:text-left">
-            We combine technology, creativity, and expertise to build solutions
-            that help businesses grow and succeed.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Why choose us"
+          title="Solutions designed around your business"
+          description="We combine technology, creativity, and expertise to build solutions
+            that help businesses grow and succeed."
+        />
 
         {/* Benefits */}
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
