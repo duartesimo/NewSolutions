@@ -1,4 +1,5 @@
 import { Code2, Bot, Layers } from "lucide-react";
+import SectionHeader from "../ui/SectionHeader";
 
 const services = [
   {
@@ -26,20 +27,11 @@ function ServicesPreview() {
     <section className="bg-slate-50 py-20">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
-        <div>
-          <p className="text-center text-sm font-semibold tracking-widest text-blue-700 uppercase md:text-left">
-            Our services
-          </p>
-
-          <h2 className="mt-4 text-center text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl md:text-left">
-            Solutions built for modern businesses
-          </h2>
-
-          <p className="mt-4 text-center text-base leading-7 text-slate-600 sm:text-lg md:text-left">
-            From websites to automation, we create digital solutions that help
-            companies grow.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Our services"
+          title="Solutions built for modern businesses"
+          description=" From websites to automation, we create digital solutions that help companies grow."
+        />
 
         {/* Cards */}
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
