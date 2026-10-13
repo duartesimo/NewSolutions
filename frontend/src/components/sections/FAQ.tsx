@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
+import SectionHeader from "../ui/SectionHeader";
 
 const faqs = [
   {
@@ -26,20 +27,12 @@ function FAQ() {
     <section className="bg-white py-20">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 lg:grid-cols-2">
         {/* Header */}
-        <div>
-          <p className="text-sm font-semibold tracking-widest text-blue-700 uppercase">
-            Frequently asked questions
-          </p>
-
-          <h2 className="mt-4 text-3xl leading-tight font-bold tracking-tight text-slate-950 sm:text-4xl">
-            Got questions?
-          </h2>
-
-          <p className="mt-4 max-w-lg text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-            Here are some of the most common questions we get. If you need more
-            information, feel free to get in touch.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Frequently asked questions"
+          title="Got questions?"
+          description="Here are some of the most common questions we get. If you need more
+            information, feel free to get in touch."
+        />
 
         {/* Questions */}
         <div className="flex flex-col gap-3">
