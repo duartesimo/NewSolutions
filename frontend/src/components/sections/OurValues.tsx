@@ -1,4 +1,5 @@
 import { HeartHandshake, Lightbulb, ShieldCheck } from "lucide-react";
+import SectionHeader from "../ui/SectionHeader";
 
 const values = [
   {
@@ -26,20 +27,12 @@ function OurValues() {
     <section className="bg-slate-50 py-20">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold tracking-widest text-blue-700 uppercase">
-            Our values
-          </p>
-
-          <h2 className="mt-4 text-3xl leading-tight font-bold tracking-tight text-slate-950 sm:text-4xl">
-            What drives us
-          </h2>
-
-          <p className="mt-4 text-base leading-7 text-slate-600 sm:mt-6 sm:text-lg sm:leading-8">
-            These are the principles that guide our work and shape the way we
-            collaborate with our clients.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Our values"
+          title="What drives us"
+          description="These are the principles that guide our work and shape the way we
+            collaborate with our clients."
+        />
 
         {/* Cards */}
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
