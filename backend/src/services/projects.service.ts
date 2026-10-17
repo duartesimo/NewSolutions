@@ -39,3 +39,9 @@ const projects: Project[] = [
 export function getAllProjects(): Project[] {
   return projects;
 }
+
+export function findProjectBySlug(
+  slug: string,
+): Project | undefined {
+  return projects.find((project) => project.slug === slug);
+}
