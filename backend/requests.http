@@ -6,3 +6,25 @@ GET http://localhost:3000/api/projects/atlas-dashboard
 
 ### Get a project that does not exist
 GET http://localhost:3000/api/projects/does-not-exist
+
+
+### Create a contact submission
+POST http://localhost:3000/api/contact
+Content-Type: application/json
+
+{
+  "name": "Alex Morgan",
+  "email": "alex@example.com",
+  "company": "Example Studio",
+  "subject": "Website project",
+  "message": "I'd like to discuss a new website."
+}
+
+### Test validation
+POST http://localhost:3000/api/contact
+Content-Type: application/json
+
+{
+  "name": "Alex Morgan",
+  "email": "alex@example.com"
+}
