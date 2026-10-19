@@ -1,6 +1,67 @@
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Send } from "lucide-react";
+import type { ContactFormData } from "../../types/contact.types";
+
+const initialFormData: ContactFormData = {
+  name: "",
+  email: "",
+  company: "",
+  subject: "",
+  message: "",
+};
 
 function ContactForm() {
+  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
+
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+
+  const [feedback, setFeedback] = useState("");
+
+  function handleChange(
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
+    const { name, value } = event.target;
+
+    setFormData((currentData) => ({
+      ...currentData,
+      [name]: value,
+    }));
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    setStatus("submitting");
+    setFeedback("");
+
+    try {
+      const response = await fetch("http://localhost:3000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result: { message?: string } = await response.json();
+
+      if (!response.ok) {
+        setStatus("error");
+        setFeedback(result.message ?? "Unable to send your message.");
+        return;
+      }
+
+      setStatus("success");
+      setFeedback("Thanks! Your message has been sent successfully.");
+      setFormData(initialFormData);
+    } catch {
+      setStatus("error");
+      setFeedback("Unable to connect to the server. Please try again later.");
+    }
+  }
+
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       {/* Header */}
@@ -15,7 +76,7 @@ function ContactForm() {
       </div>
 
       {/* Form */}
-      <form className="mt-8 flex flex-col gap-5">
+      <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-5">
         {/* Name + Email */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
@@ -28,7 +89,12 @@ function ContactForm() {
 
             <input
               id="name"
+              name="name"
               type="text"
+              autoComplete="name"
+              required
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Your name"
               className="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm transition outline-none focus:border-blue-700"
             />
@@ -44,7 +110,12 @@ function ContactForm() {
 
             <input
               id="email"
+              name="email"
               type="email"
+              autoComplete="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
               placeholder="your@email.com"
               className="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm transition outline-none focus:border-blue-700"
             />
@@ -62,7 +133,11 @@ function ContactForm() {
 
           <input
             id="company"
+            name="company"
             type="text"
+            autoComplete="organization"
+            value={formData.company}
+            onChange={handleChange}
             placeholder="Your company (optional)"
             className="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm transition outline-none focus:border-blue-700"
           />
@@ -79,7 +154,10 @@ function ContactForm() {
 
           <input
             id="subject"
+            name="subject"
             type="text"
+            value={formData.subject}
+            onChange={handleChange}
             placeholder="How can we help you?"
             className="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm transition outline-none focus:border-blue-700"
           />
@@ -96,7 +174,11 @@ function ContactForm() {
 
           <textarea
             id="message"
+            name="message"
             rows={5}
+            required
+            value={formData.message}
+            onChange={handleChange}
             placeholder="Tell us more about your project..."
             className="mt-2 w-full resize-none rounded-lg border border-slate-300 px-4 py-3 text-sm transition outline-none focus:border-blue-700"
           />
@@ -105,11 +187,24 @@ function ContactForm() {
         {/* Button */}
         <button
           type="submit"
-          className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-blue-900 px-6 py-3 font-medium text-white transition hover:bg-blue-800"
+          disabled={status === "submitting"}
+          className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-blue-900 px-6 py-3 font-medium text-white transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          Send message
+          {status === "submitting" ? "Sending..." : "Send message"}
           <Send size={18} />
         </button>
+
+        {/* Feedback */}
+        {feedback && (
+          <p
+            role={status === "error" ? "alert" : "status"}
+            className={`text-sm ${
+              status === "error" ? "text-red-600" : "text-green-700"
+            }`}
+          >
+            {feedback}
+          </p>
+        )}
 
         <p className="text-xs text-slate-500">
           We'll never share your information with third parties.
