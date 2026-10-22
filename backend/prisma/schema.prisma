@@ -11,3 +11,28 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  title        String
+  slug         String   @unique
+  description  String
+  category     String
+  technologies String[]
+  year         Int
+  featured     Boolean  @default(false)
+
+  @@map("projects")
+}
+
+model ContactSubmission {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  company   String?
+  subject   String?
+  message   String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("contact_submissions")
+}
