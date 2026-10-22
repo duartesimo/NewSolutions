@@ -1,25 +1,39 @@
 import type { Request, Response } from "express";
-import { getAllProjects } from "../services/projects.service.js";
-import { findProjectBySlug } from "../services/projects.service.js";
+import { getAllProjects, findProjectBySlug, } from "../services/projects.service.js";
 
-export function getProjects(_req: Request, res: Response) {
-  const projects = getAllProjects();
+export async function getProjects(_req: Request, res: Response) {
+  try {
+    const projects = await getAllProjects();
 
-  res.json(projects);
+    return res.json(projects);
+  } catch (error) {
+    console.error("Failed to fetch projects:", error);
+
+    return res.status(500).json({
+      message: "Unable to fetch projects.",
+    });
+  }
 }
 
-export function getProjectBySlugController(
+export async function getProjectBySlugController(
   req: Request<{ slug: string }>,
   res: Response,
 ) {
-  const project = findProjectBySlug(req.params.slug);
+  try {
+    const project = await findProjectBySlug(req.params.slug);
 
-  if (!project) {
-    res.status(404).json({
-      message: "Project not found",
+    if (!project) {
+      return res.status(404).json({
+        message: "Project not found",
+      });
+    }
+
+    return res.json(project);
+  } catch (error) {
+    console.error("Failed to fetch project:", error);
+
+    return res.status(500).json({
+      message: "Unable to fetch project.",
     });
-    return;
   }
-
-  res.json(project);
 }
