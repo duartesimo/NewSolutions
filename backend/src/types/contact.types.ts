@@ -5,8 +5,3 @@ export type CreateContactInput = {
   subject?: string;
   message: string;
 };
-
-export type ContactSubmission = CreateContactInput & {
-  id: number;
-  createdAt: string;
-};

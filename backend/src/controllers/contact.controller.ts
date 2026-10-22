@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 import { createContactSubmission } from "../services/contact.service.js";
 import type { CreateContactInput } from "../types/contact.types.js";
 
-export function createContact(req: Request, res: Response) {
+export async function createContact(req: Request, res: Response) {
   const body: unknown = req.body;
 
   if (typeof body !== "object" || body === null || Array.isArray(body)) {
@@ -46,13 +46,21 @@ export function createContact(req: Request, res: Response) {
     ...(typeof subject === "string" ? { subject } : {}),
   };
 
-  const submission = createContactSubmission(input);
+  try {
+    const submission = await createContactSubmission(input);
 
-  return res.status(201).json({
-    message: "Contact message received successfully.",
-    submission: {
-      id: submission.id,
-      createdAt: submission.createdAt,
-    },
-  });
+    return res.status(201).json({
+      message: "Contact message received successfully.",
+      submission: {
+        id: submission.id,
+        createdAt: submission.createdAt,
+      },
+    });
+  } catch (error) {
+    console.error("Failed to save contact submission:", error);
+
+    return res.status(500).json({
+      message: "Unable to save contact message.",
+    });
+  }
 }

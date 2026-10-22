@@ -1,29 +1,17 @@
-import type {
-  ContactSubmission,
-  CreateContactInput,
-} from "../types/contact.types.js";
+import { prisma } from "../../prisma/prisma.js";
+import type { CreateContactInput } from "../types/contact.types.js";
 
-const contactSubmissions: ContactSubmission[] = [];
-
-let nextId = 1;
-
-export function createContactSubmission(
-  input: CreateContactInput,
-): ContactSubmission {
+export async function createContactSubmission(input: CreateContactInput) {
   const company = input.company?.trim();
   const subject = input.subject?.trim();
 
-  const submission: ContactSubmission = {
-    id: nextId++,
-    name: input.name.trim(),
-    email: input.email.trim(),
-    message: input.message.trim(),
-    createdAt: new Date().toISOString(),
-    ...(company ? { company } : {}),
-    ...(subject ? { subject } : {}),
-  };
-
-  contactSubmissions.push(submission);
-
-  return submission;
+  return prisma.contactSubmission.create({
+    data: {
+      name: input.name.trim(),
+      email: input.email.trim(),
+      message: input.message.trim(),
+      ...(company ? { company } : {}),
+      ...(subject ? { subject } : {}),
+    },
+  });
 }
