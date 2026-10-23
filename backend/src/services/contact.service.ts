@@ -1,5 +1,5 @@
 import { prisma } from "../../prisma/prisma.js";
-import type { CreateContactInput } from "../types/contact.types.js";
+import type { CreateContactInput } from "../schemas/contact.schema.js";
 
 export async function createContactSubmission(input: CreateContactInput) {
   const company = input.company?.trim();
