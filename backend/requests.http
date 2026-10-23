@@ -28,3 +28,36 @@ Content-Type: application/json
   "name": "Alex Morgan",
   "email": "alex@example.com"
 }
+
+
+### 1. Valid request
+POST http://localhost:3000/api/contact
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "test@example.com",
+  "company": "Test Company",
+  "subject": "Zod test",
+  "message": "Testing Zod validation."
+}
+
+### 2. Invalid email
+POST http://localhost:3000/api/contact
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "not-an-email",
+  "message": "Testing invalid email."
+}
+
+### 3. Missing required fields
+POST http://localhost:3000/api/contact
+Content-Type: application/json
+
+{
+  "name": "   ",
+  "email": "test@example.com",
+  "message": ""
+}
