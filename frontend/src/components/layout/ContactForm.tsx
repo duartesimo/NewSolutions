@@ -1,6 +1,7 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Send } from "lucide-react";
 import type { ContactFormData } from "../../types/contact.types";
+import { API_URL } from "../../config/api.js";
 
 const initialFormData: ContactFormData = {
   name: "",
@@ -37,7 +38,7 @@ function ContactForm() {
     setFeedback("");
 
     try {
-      const response = await fetch("http://localhost:3000/api/contact", {
+      const response = await fetch(`${API_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

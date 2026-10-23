@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Project } from "../../types/projects.types";
 import SectionHeader from "../ui/SectionHeader";
+import { API_URL } from "../../config/api.js";
 
 function OurWork() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -10,7 +11,7 @@ function OurWork() {
   useEffect(() => {
     async function fetchProjects() {
       try {
-        const response = await fetch("http://localhost:3000/api/projects");
+        const response = await fetch(`${API_URL}/api/projects`);
 
         if (!response.ok) {
           throw new Error("Failed to fetch projects");
